@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 IMAGE_NAME="cpp-env"
 DOCKERFILE="docker/Dockerfile"
@@ -16,9 +16,11 @@ fi
 if ! docker image inspect "$IMAGE_NAME" > /dev/null 2>&1; then
     echo "🟢 Docker image does not exist. Will build."
     docker build -t "$IMAGE_NAME" -f "$DOCKERFILE" .
+    echo "✅ Docker image built successfully."
 fi
 
 # Run container
+echo "🟢 Starting Docker container."
 docker run --rm -it \
     -v "$PWD:/project" \
     "$IMAGE_NAME" \
