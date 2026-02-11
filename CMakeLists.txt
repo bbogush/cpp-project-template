@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(hello VERSION 0.1.0 LANGUAGES CXX)
+project(cpp-project-template VERSION 0.1.0 LANGUAGES CXX)
 
 # Collect sources from src/
 set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")

@@ -4,7 +4,7 @@ C++ project template.
 
 ## Setup environment
 
-Docker used to have the same environment for development.
+Docker is used to provide the same environment for development.
 
 ```
 ./docker/docker_run.sh
@@ -12,7 +12,7 @@ Docker used to have the same environment for development.
 
 ## VSCode DevContainers
 
-VSCode DevContainers used to automatically start docker with development environment. It requires DevContainers extension. In order to start container need to execute Ctrl+Shft+P >DevContainers: Rebuild container.
+VSCode DevContainers can automatically start docker with development environment. It requires DevContainers extension. In order to start the container, you need to execute Ctrl+Shift+P > DevContainers: Rebuild container.
 
 ## Build
 
