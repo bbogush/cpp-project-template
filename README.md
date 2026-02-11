@@ -28,5 +28,5 @@ cmake --build .
 Run the produced executable (name matches project):
 
 ```bash
-./hello
+./cpp-project-template
 ```
