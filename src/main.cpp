@@ -10,7 +10,7 @@
 int main()
 {
     const project::my_component::MyComponent component;
-    std::cout << "1 + 2 = " << component.add(1, 2) << std::endl;
+    std::cout << "1 + 2 = " << component.add(1, 2) << '\n';
 
     return 0;
 }
