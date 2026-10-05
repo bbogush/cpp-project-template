@@ -1,0 +1,18 @@
+add_executable(my_component_add_benchmark add_benchmark.cpp)
+
+target_link_libraries(my_component_add_benchmark PRIVATE project_options)
+target_link_libraries(my_component_add_benchmark PRIVATE project_features)
+target_link_libraries(my_component_add_benchmark PRIVATE benchmark::benchmark)
+target_link_libraries(my_component_add_benchmark PRIVATE benchmark::benchmark_main)
+target_link_libraries(my_component_add_benchmark PRIVATE my_component)
+
+target_include_directories(my_component_add_benchmark PRIVATE ${PROJECT_SOURCE_DIR}/src)
+
+set_target_properties(my_component_add_benchmark PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
+)
+
+set(PROJECT_BENCHMARK_EXECUTABLES
+  ${PROJECT_BENCHMARK_EXECUTABLES}
+  my_component_add_benchmark
+  PARENT_SCOPE)

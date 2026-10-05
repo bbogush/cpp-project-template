@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 project(cpp-project-template VERSION 0.1.0 LANGUAGES CXX)
 
 option(BUILD_TESTING "Build unit tests" OFF)
+option(BUILD_BENCHMARKS "Build Google Benchmark targets" OFF)
 option(ENABLE_COVERAGE "Instrument src/ targets for code coverage" OFF)
 option(ENABLE_CLANG_TIDY "Add clang-tidy static analysis target" OFF)
 
@@ -25,6 +26,10 @@ add_subdirectory(src)
 if(BUILD_TESTING)
   enable_testing()
   add_subdirectory(tests)
+endif()
+
+if(BUILD_BENCHMARKS)
+  add_subdirectory(benchmarks)
 endif()
 
 if(ENABLE_COVERAGE AND BUILD_TESTING)
