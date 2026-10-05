@@ -36,6 +36,7 @@ if(ENABLE_COVERAGE AND BUILD_TESTING)
   add_custom_target(coverage-report
     COMMAND "${CMAKE_COMMAND}"
             -DCOVERAGE_BINARY_DIR=${CMAKE_BINARY_DIR}
+            -DCOVERAGE_SOURCE_DIR=${CMAKE_SOURCE_DIR}
             -P ${CMAKE_SOURCE_DIR}/cmake/coverage_report.cmake
     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
     COMMENT "Generating src/ coverage report (lcov CLI + HTML)"
