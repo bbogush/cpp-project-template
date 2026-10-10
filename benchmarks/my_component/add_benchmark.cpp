@@ -20,8 +20,6 @@ static void add_benchmark(benchmark::State &state)
         int sum = component.add(a, b);
         benchmark::DoNotOptimize(sum);
     }
-
-    state.SetItemsProcessed(state.iterations());
 }
 
 BENCHMARK(add_benchmark);
@@ -36,17 +34,17 @@ static void add_benchmark_p50_p99(benchmark::State &state)
     samples.reserve(state.max_iterations);
 
     for (auto _ : state) {
+        const auto start = std::chrono::steady_clock::now();
+
         // Hide the operands from the optimizer so the call is not folded away
         benchmark::DoNotOptimize(a);
         benchmark::DoNotOptimize(b);
 
-        const auto start = std::chrono::steady_clock::now();
-
         int sum = component.add(a, b);
 
-        const auto end = std::chrono::steady_clock::now();
-
         benchmark::DoNotOptimize(sum);
+
+        const auto end = std::chrono::steady_clock::now();
 
         samples.push_back(
             std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count());
@@ -63,8 +61,6 @@ static void add_benchmark_p50_p99(benchmark::State &state)
         state.counters["P50_ns"] = percentile(0.50);
         state.counters["P99_ns"] = percentile(0.99);
     }
-
-    state.SetItemsProcessed(state.iterations());
 }
 
 BENCHMARK(add_benchmark_p50_p99);
