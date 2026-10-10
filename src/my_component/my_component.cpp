@@ -7,7 +7,8 @@ namespace project::my_component {
 int MyComponent::add(int a, int b) const
 {
     // Simulate some heavy computation
-    std::this_thread::sleep_for(std::chrono::microseconds(1));
+    const auto until = std::chrono::steady_clock::now() + std::chrono::microseconds(1);
+    while (std::chrono::steady_clock::now() < until) {}
 
     return a + b;
 }
