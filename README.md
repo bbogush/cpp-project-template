@@ -122,16 +122,6 @@ The `benchmarks-report` preset builds any missing benchmark binaries and runs th
 Each benchmark runs once, and each binary writes its results to
 `build/benchmarks/benchmark-results/<binary>.json`.
 
-Benchmark binaries:
-
-| Binary | Measures |
-|--------|----------|
-| `my_component_add_benchmark` | `MyComponent::add` call throughput (calls/s) |
-
-```bash
-./build/benchmarks/my_component_add_benchmark
-```
-
 May need to disable CPU scaling:
 ```bash
 sudo cpupower frequency-set -g performance
