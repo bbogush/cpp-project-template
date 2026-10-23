@@ -30,7 +30,7 @@ static void add_benchmark_p50_p99(benchmark::State &state)
     int a = 1;
     int b = 2;
 
-    std::vector<std::uint64_t> samples;
+    std::vector<uint64_t> samples;
     samples.reserve(state.max_iterations);
 
     for (auto _ : state) {
@@ -54,8 +54,7 @@ static void add_benchmark_p50_p99(benchmark::State &state)
     if (!samples.empty()) {
         std::sort(samples.begin(), samples.end());
         const auto percentile = [&samples](double p) {
-            const auto index = static_cast<std::size_t>(
-                p * static_cast<double>(samples.size() - 1));
+            const auto index = static_cast<size_t>(p * static_cast<double>(samples.size() - 1));
             return samples[index];
         };
         state.counters["P50_ns"] = percentile(0.50);
