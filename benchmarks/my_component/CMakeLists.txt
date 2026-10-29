@@ -8,11 +8,9 @@ target_link_libraries(my_component_add_benchmark PRIVATE my_component)
 
 target_include_directories(my_component_add_benchmark PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
-set_target_properties(my_component_add_benchmark PROPERTIES
-  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
-)
+set_target_properties(my_component_add_benchmark PROPERTIES RUNTIME_OUTPUT_DIRECTORY
+                                                            "${CMAKE_BINARY_DIR}")
 
 set(PROJECT_BENCHMARK_EXECUTABLES
-  ${PROJECT_BENCHMARK_EXECUTABLES}
-  my_component_add_benchmark
-  PARENT_SCOPE)
+    ${PROJECT_BENCHMARK_EXECUTABLES} my_component_add_benchmark
+    PARENT_SCOPE)
