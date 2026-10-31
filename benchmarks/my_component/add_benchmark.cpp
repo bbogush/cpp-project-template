@@ -4,7 +4,7 @@
 
 #include <algorithm>
 #include <chrono>
-#include <cstdint>
+#include <cstddef>
 #include <vector>
 
 static void add_benchmark(benchmark::State &state)
@@ -30,8 +30,8 @@ static void add_benchmark_p50_p99(benchmark::State &state)
     int a = 1;
     int b = 2;
 
-    std::vector<uint64_t> samples;
-    samples.reserve(state.max_iterations);
+    std::vector<std::chrono::nanoseconds::rep> samples;
+    samples.reserve(static_cast<size_t>(state.max_iterations));
 
     for (auto _ : state) {
         const auto start = std::chrono::steady_clock::now();
@@ -55,7 +55,7 @@ static void add_benchmark_p50_p99(benchmark::State &state)
         std::sort(samples.begin(), samples.end());
         const auto percentile = [&samples](double p) {
             const auto index = static_cast<size_t>(p * static_cast<double>(samples.size() - 1));
-            return samples[index];
+            return static_cast<double>(samples[index]);
         };
         state.counters["P50_ns"] = percentile(0.50);
         state.counters["P99_ns"] = percentile(0.99);
