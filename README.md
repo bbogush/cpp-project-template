@@ -3,7 +3,7 @@
 A minimal C++ project template with CMake, Docker-based development environment, and VS Code Dev
 Containers support.
 
-**Stack:** C++20, CMake 3.20+, Ubuntu 24.04 (GCC, clang-tidy, CMake, Git, Node.js for prettier,
+**Stack:** C++20, CMake 3.20+, Ubuntu 26.04 (GCC, clang-tidy, CMake, Git, Node.js for prettier,
 shfmt)
 
 ## Prerequisites

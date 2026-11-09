@@ -9,7 +9,7 @@ on:
 
 jobs:
   unit-tests-valgrind-memcheck:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
 
     steps:
@@ -24,11 +24,6 @@ jobs:
             build-essential \
             cmake \
             ninja-build \
-            libboost-dev \
-            libboost-system-dev \
-            libcurl4-openssl-dev \
-            libssl-dev \
-            liburing-dev \
             valgrind
 
       - name: Configure
