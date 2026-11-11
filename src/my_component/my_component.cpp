@@ -4,6 +4,7 @@
 
 namespace project::my_component {
 
+// cppcheck-suppress functionStatic
 int MyComponent::add(int a, int b) const
 {
     // Simulate some heavy computation
