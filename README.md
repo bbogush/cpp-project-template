@@ -289,14 +289,19 @@ shfmt -w script.sh
 ## Project layout
 
 ```
-.
-|-- CMakeLists.txt          # Root CMake project
-|-- CMakePresets.json       # Release, debug, tests, ASan, TSan, Valgrind, coverage, clang-tidy, cppcheck and benchmarks
-|-- src/                    # Application source
-|-- tests/                  # Google Test unit tests
-|-- benchmarks/             # Google Benchmark targets
-|-- docker/                 # Docker image and helper scripts
-`-- .devcontainer/          # VS Code Dev Container config
+|-- CMakeLists.txt            # Root project configuration, warnings, and custom targets
+|-- CMakePresets.json         # Configure, build, and test presets
+|-- build/                    # Generated build output (gitignored)
+|-- src/                      # Application sources and component libraries
+|   |-- main.cpp              # Application entry point
+|   |-- <component>/          # One library per component (.h, .cpp, CMakeLists.txt)
+|-- tests/                    # Google Test binaries, mirroring src/ components
+|-- benchmarks/               # Google Benchmark binaries, mirroring src/ components
+|-- cmake/                    # CMake modules and development scripts
+|-- docker/                   # Dockerfile and helper scripts
+|-- .devcontainer/            # VS Code Dev Container configuration
+|-- doc/design/               # Design documents
+|-- .github/workflows/        # CI workflows
 ```
 
 ## Contributing
